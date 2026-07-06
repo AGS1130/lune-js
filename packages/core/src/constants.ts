@@ -1,0 +1,31 @@
+export enum ReactiveFlags {
+  SKIP = "__lu_skip",
+  IS_REACTIVE = "__lu_isReactive",
+  IS_READONLY = "__lu_isReadonly",
+  IS_SHALLOW = "__lu_isShallow",
+  RAW = "__lu_raw",
+  IS_REF = "__lu_isRef"
+}
+
+export enum SystemFlags {
+  None = 0,
+  Mutable = 1 << 0,
+  Watching = 1 << 1,
+  RecursedCheck = 1 << 2,
+  Recursed = 1 << 3,
+  Dirty = 1 << 4,
+  Pending = 1 << 5
+}
+
+export enum TrackOpTypes {
+  GET = "get",
+  HAS = "has",
+  ITERATE = "iterate"
+}
+
+export enum TriggerOpTypes {
+  SET = "set",
+  ADD = "add",
+  DELETE = "delete",
+  CLEAR = "clear"
+}

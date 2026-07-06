@@ -1,0 +1,46 @@
+{
+  "name": "@lune-js/context",
+  "version": "0.0.0",
+  "description": "Optimized context library to manage state and behavior in Lune.js",
+  "bugs": {
+    "url": "https://github.com/AGS1130/lune-js/issues"
+  },
+  "license": "MIT",
+  "author": "Gregory Salinas <ags1130@yahoo.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AGS1130/lune-js.git",
+    "directory": "packages/context"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf dist node_modules",
+    "dev": "vite build --watch",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "dependencies": {
+    "@lune-js/core": "workspace:*",
+    "@lune-js/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "clean-package": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-dts": "catalog:"
+  }
+}

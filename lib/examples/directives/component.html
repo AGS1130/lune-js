@@ -1,0 +1,40 @@
+<script type="module">
+  import { createApp, reactive } from "../../src";
+
+  function InlineTemplate() {
+    return {
+      $template: `
+      <template>
+        <h2>Inline Template</h2>
+        {{ count }} {{ plusOne }}
+        <button @click="count++">++</button>
+      </template>
+      `,
+      count: 0,
+      get plusOne() {
+        return this.count + 1;
+      }
+    };
+  }
+
+  function TargetTemplate() {
+    return {
+      $template: "#target",
+      count: 0,
+      get plusOne() {
+        return this.count + 1;
+      }
+    };
+  }
+
+  createApp({ InlineTemplate, TargetTemplate }).mount();
+</script>
+
+<template id="target">
+  <h2>Target Template</h2>
+  {{ count }} {{ plusOne }}
+  <button @click="count++">++</button>
+</template>
+
+<div lu-scope="InlineTemplate()"></div>
+<div lu-scope="TargetTemplate()"></div>

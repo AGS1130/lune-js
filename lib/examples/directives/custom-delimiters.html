@@ -1,0 +1,15 @@
+<script type="module">
+  import { createApp } from "../../src";
+  createApp({
+    $delimiters: ["${", "}"]
+  }).mount();
+</script>
+
+<div lu-scope="{ count: 1 }">
+  <p lu-if="count">count is ${ count }!</p>
+  <button @click="count++">increase</button>
+
+  <p lu-for="i in [1, 2, 3]" :key="i">${ i }</p>
+
+  <p lu-if="true">${ count }</p>
+</div>

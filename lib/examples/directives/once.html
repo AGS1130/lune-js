@@ -1,0 +1,18 @@
+<script type="module">
+  import { createApp } from "../../src";
+  createApp().mount();
+</script>
+
+<div lu-scope="{ count: 5 }">
+  {{ count }}
+  <div lu-once>
+    <h2>Once</h2>
+    <p>{{ count }}</p>
+    <p lu-text="count"></p>
+    <ul lu-for="i in count">
+      <li>{{ i }}</li>
+    </ul>
+  </div>
+  <span lu-text="count"></span>
+  <button @click="count++">++</button>
+</div>

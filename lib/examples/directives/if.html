@@ -1,0 +1,13 @@
+<script type="module">
+  import { createApp } from "../../src";
+
+  createApp().mount("#app");
+</script>
+
+<div id="app" lu-scope="{ open: true, elseOpen: true }">
+  <button @click="open = !open">toggle</button>
+  <button @click="elseOpen = !elseOpen">toggle else</button>
+  <div lu-if="open">ok</div>
+  <div lu-else-if="elseOpen">else if</div>
+  <template lu-else>else</template>
+</div>

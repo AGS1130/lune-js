@@ -1,0 +1,9 @@
+<script type="module">
+  import { createApp } from "../../src";
+  createApp().mount();
+</script>
+
+<div lu-scope="{ count: 0 }">
+  <div lu-effect="$el.textContent = count"></div>
+  <button @click="count++">++</button>
+</div>
