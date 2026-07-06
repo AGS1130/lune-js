@@ -1,6 +1,6 @@
 {
   "name": "@lune-js/context",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Optimized context library to manage state and behavior in Lune.js",
   "bugs": {
     "url": "https://github.com/AGS1130/lune-js/issues"

@@ -1,6 +1,6 @@
 {
   "name": "lune-js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple, declarative, and functional library for building reactive user interfaces",
   "bugs": {
     "url": "https://github.com/AGS1130/lune-js/issues"
