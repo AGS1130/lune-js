@@ -24,6 +24,8 @@ jobs:
 
   tests:
     name: Tests
+    env:
+      DEV: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
