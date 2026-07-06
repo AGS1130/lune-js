@@ -34,13 +34,13 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@lune-js/core": "workspace:*",
-    "@lune-js/utils": "workspace:*"
+    "@lune-js/core": "0.1.0",
+    "@lune-js/utils": "0.1.0"
   },
   "devDependencies": {
-    "clean-package": "catalog:",
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-dts": "catalog:"
+    "clean-package": "2.2.0",
+    "typescript": "6.0.3",
+    "vite": "8.1.3",
+    "vite-plugin-dts": "5.0.3"
   }
 }
