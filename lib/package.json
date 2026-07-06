@@ -1,6 +1,6 @@
 {
   "name": "lune-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple, declarative, and functional library for building reactive user interfaces",
   "bugs": {
     "url": "https://github.com/AGS1130/lune-js/issues"
@@ -36,9 +36,9 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@lune-js/context": "0.1.0",
-    "@lune-js/core": "0.1.0",
-    "@lune-js/utils": "0.1.0"
+    "@lune-js/context": "0.1.1",
+    "@lune-js/core": "0.1.1",
+    "@lune-js/utils": "0.1.1"
   },
   "devDependencies": {
     "clean-package": "2.2.0",
