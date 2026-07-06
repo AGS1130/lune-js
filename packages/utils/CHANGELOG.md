@@ -1,5 +1,16 @@
 # @lune-js/utils
 
+## [0.1.1] - 2026-07-06
+
+### Fixed
+
+- Fixes Bun Workspaces issue by removing `"workspace:*"` and `"catalog:"` throughout the monorepo.
+  ```bash
+  error: Workspace dependency "*" not found
+  Searched in "./*"
+  Workspace documentation: https://bun.com/docs/install/workspaces
+  ```
+
 ## [0.1.0] - 2026-07-06
 
 ### Added

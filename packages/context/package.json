@@ -1,6 +1,6 @@
 {
   "name": "@lune-js/context",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Optimized context library to manage state and behavior in Lune.js",
   "bugs": {
     "url": "https://github.com/AGS1130/lune-js/issues"
@@ -34,8 +34,8 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@lune-js/core": "0.1.0",
-    "@lune-js/utils": "0.1.0"
+    "@lune-js/core": "0.1.1",
+    "@lune-js/utils": "0.1.1"
   },
   "devDependencies": {
     "clean-package": "2.2.0",
