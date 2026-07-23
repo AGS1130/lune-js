@@ -16,32 +16,38 @@
     "dist"
   ],
   "type": "module",
-  "main": "dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
-  "unpkg": "dist/index.iife.js",
-  "jsdelivr": "dist/index.iife.js",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
   },
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
   "scripts": {
-    "build": "vite build",
-    "clean": "rm -rf dist node_modules",
-    "dev": "vite build --watch",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "build": "tsdown",
+    "clean": "rm -rf dist node_modules"
   },
   "dependencies": {
     "@lune-js/utils": "0.1.1"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
-    "typescript": "6.0.3",
-    "vite": "8.1.3",
-    "vite-plugin-dts": "5.0.3"
+    "tsdown": "0.22.13",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.10.0"
   }
 }

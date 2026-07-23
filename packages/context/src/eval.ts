@@ -9,7 +9,7 @@ const DANGEROUS_PATTERNS = [
   /\b(delete|void|typeof|instanceof)\b.*\(/
 ];
 
-export function evaluate(scope: any, exp: string, el?: Node) {
+export function evaluate(scope: any, exp: string, el?: Node): any {
   if (!exp.trim()) {
     if (import.meta.env.DEV) {
       warn("Empty expression. `evaluate` must contain an expression.");
@@ -20,7 +20,7 @@ export function evaluate(scope: any, exp: string, el?: Node) {
   return execute(scope, `return(${exp})`, el);
 }
 
-export function execute(scope: any, exp: string, el?: Node) {
+export function execute(scope: any, exp: string, el?: Node): any {
   if (!validateExpression(exp)) {
     if (import.meta.env.DEV) {
       warn(`Potentially unsafe expression rejected: "${exp}"`);

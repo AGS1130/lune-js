@@ -1,8 +1,6 @@
 // oxlint-disable
 import { describe, it, expect, beforeEach, afterEach, vi } from "bun:test";
-import { nextTick } from "@lune-js/context";
-import { reactive } from "@lune-js/core";
-import { createApp } from "../src";
+import { createApp, nextTick, reactive } from "../src";
 import {
   createValueHandler,
   onCompositionEnd,

@@ -1,7 +1,7 @@
 // oxlint-disable
 import { describe, it, expect, beforeEach, vi } from "bun:test";
 import { createContext, evaluate, nextTick } from "@lune-js/context";
-import { effect as rawEffect } from "@lune-js/core";
+import { effect } from "../src";
 import { on } from "../src/on";
 
 describe("on", () => {
@@ -22,7 +22,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: undefined,
@@ -46,7 +46,7 @@ describe("on", () => {
         }
         return ctx.scope[exp || "handler"];
       },
-      effect: rawEffect,
+      effect,
       exp: "handler($event)",
       arg: "click",
       modifiers: undefined,
@@ -65,7 +65,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "lune:mounted",
       modifiers: undefined,
@@ -85,7 +85,7 @@ describe("on", () => {
     const cleanup = on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "lune:unmounted",
       modifiers: undefined,
@@ -106,7 +106,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { stop: true },
@@ -130,7 +130,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { prevent: true },
@@ -153,7 +153,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { self: true },
@@ -187,7 +187,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { ctrl: true },
@@ -211,7 +211,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { shift: true },
@@ -235,7 +235,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { alt: true },
@@ -259,7 +259,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { meta: true },
@@ -283,7 +283,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { left: true },
@@ -307,7 +307,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { middle: true },
@@ -331,7 +331,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { right: true },
@@ -355,7 +355,7 @@ describe("on", () => {
     on({
       el,
       get: (exp = "handler") => evaluate(ctx.scope, exp, el),
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { exact: true },
@@ -381,7 +381,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "keydown",
       modifiers: { enter: true },
@@ -405,7 +405,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { right: true },
@@ -426,7 +426,7 @@ describe("on", () => {
     on({
       el,
       get: () => handler,
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "click",
       modifiers: { middle: true },
@@ -446,7 +446,7 @@ describe("on", () => {
     on({
       el,
       get: () => {},
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: undefined,
       modifiers: undefined,
@@ -464,7 +464,7 @@ describe("on", () => {
     on({
       el,
       get: () => {},
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "mounted",
       modifiers: undefined,
@@ -479,7 +479,7 @@ describe("on", () => {
     on({
       el,
       get: () => {},
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: "unmounted",
       modifiers: undefined,
@@ -505,7 +505,7 @@ describe("on", () => {
     on({
       el,
       get: () => () => {},
-      effect: rawEffect,
+      effect,
       exp: "handler",
       arg: undefined, // no event type
       modifiers: undefined,

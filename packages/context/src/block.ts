@@ -44,7 +44,7 @@ export class Block {
     return this.start ?? (this.template as Element);
   }
 
-  insert(parent: ParentNode, anchor: Node | null = null) {
+  insert(parent: ParentNode, anchor: Node | null = null): void {
     if (parent == null) return;
 
     if (this.isFragment) {
