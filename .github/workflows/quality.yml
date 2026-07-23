@@ -9,9 +9,11 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  quality:
+    name: Quality
     runs-on: ubuntu-latest
+    env:
+      DEV: true
     steps:
       - name: Checkout branch
         uses: actions/checkout@v6
@@ -22,30 +24,8 @@ jobs:
       - name: Build packages
         run: bun run build
 
-  tests:
-    name: Tests
-    env:
-      DEV: true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v6
-
-      - name: Install
-        uses: ./.github/actions/install
-
       - name: Run tests
         run: bun test
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v6
-
-      - name: Install
-        uses: ./.github/actions/install
 
       - name: Run lint
         run: bun lint
