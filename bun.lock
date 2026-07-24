@@ -19,11 +19,11 @@
     },
     "lib": {
       "name": "lune-js",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
-        "@lune-js/context": "0.1.1",
-        "@lune-js/core": "0.1.1",
-        "@lune-js/utils": "0.1.1",
+        "@lune-js/context": "0.1.2",
+        "@lune-js/core": "0.1.2",
+        "@lune-js/utils": "0.1.2",
       },
       "devDependencies": {
         "tsdown": "0.22.13",
@@ -33,10 +33,10 @@
     },
     "packages/context": {
       "name": "@lune-js/context",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
-        "@lune-js/core": "0.1.1",
-        "@lune-js/utils": "0.1.1",
+        "@lune-js/core": "0.1.2",
+        "@lune-js/utils": "0.1.2",
       },
       "devDependencies": {
         "tsdown": "0.22.13",
@@ -45,9 +45,9 @@
     },
     "packages/core": {
       "name": "@lune-js/core",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
-        "@lune-js/utils": "0.1.1",
+        "@lune-js/utils": "0.1.2",
       },
       "devDependencies": {
         "tsdown": "0.22.13",
@@ -56,7 +56,7 @@
     },
     "packages/utils": {
       "name": "@lune-js/utils",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
         "es-toolkit": "1.49.0",
       },

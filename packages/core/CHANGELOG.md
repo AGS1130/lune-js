@@ -1,5 +1,17 @@
 # @lune-js/core
 
+## [0.1.2] - 2026-07-24
+
+### Fixed
+
+- - Fixes missing types.
+  - Fixes package exports.
+  - Removes `clean-package`.
+  - Replaces `vite` with `tsdown` as bundler.
+
+- - Fixes bind directives that update existing attributes.
+  - Fixes reactivity edge case to prevent triggering updates when property assignments fail on protected or read-only properties.
+
 ## [0.1.1] - 2026-07-06
 
 ### Fixed
