@@ -126,7 +126,7 @@ class MutableReactiveHandler extends BaseReactiveHandler {
     const hadKey = isArrayWithIntegerKey ? Number(key) < target.length : hasOwn(target, key);
     const result = Reflect.set(target, key, value, receiver);
     // don't trigger if target is something up in the prototype chain of original
-    if (target === toRaw(receiver)) {
+    if (target === toRaw(receiver) && result) {
       if (!hadKey) {
         trigger(target, TriggerOpTypes.ADD, key, value);
       } else if (hasChanged(value, oldValue)) {

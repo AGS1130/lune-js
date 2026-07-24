@@ -57,6 +57,28 @@ describe("reactive", () => {
     expect("foo" in original).toBe(false);
   });
 
+  test("failed set operation should not trigger effects", () => {
+    const original: any = {};
+    Object.defineProperty(original, "foo", {
+      value: 1,
+      writable: false,
+      configurable: true
+    });
+    const observed = reactive(original);
+    let dummy: number | undefined;
+    let run = 0;
+    effect(() => {
+      run++;
+      dummy = observed.foo;
+    });
+
+    expect(() => {
+      observed.foo = 2;
+    }).toThrow(TypeError);
+    expect(dummy).toBe(1);
+    expect(run).toBe(1);
+  });
+
   test("original value change should reflect in observed value (Object)", () => {
     const original: any = { foo: 1 };
     const observed = reactive(original);
