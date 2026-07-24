@@ -36,7 +36,6 @@ describe("directives", () => {
     });
   });
 
-  // ? Tests appear to be flaky; internals are working, but DOM not reflecting changes
   describe("lu-bind", () => {
     it("should bind attribute", () => {
       container.innerHTML = '<div lu-bind:id="dynamicId"></div>';
@@ -46,7 +45,7 @@ describe("directives", () => {
       expect(div?.getAttribute("id")).toBe("test-id");
     });
 
-    it.todo("should update attribute when data changes", async () => {
+    it("should update attribute when data changes", async () => {
       container.innerHTML = '<div lu-bind:id="dynamicId"></div>';
       const data = reactive({ dynamicId: "initial" });
       const app = createApp(data);
@@ -92,7 +91,7 @@ describe("directives", () => {
       expect(div.fooBar).toBe("test");
     });
 
-    it.todo("should bind style as string", async () => {
+    it("should bind style as string", async () => {
       container.innerHTML = '<div :style="style"></div>';
       const data = reactive({ style: "color: red" });
       const app = createApp(data);
@@ -105,7 +104,7 @@ describe("directives", () => {
       expect(div?.style.color).toBe("blue");
     });
 
-    it.todo("should bind style as object", async () => {
+    it("should bind style as object", async () => {
       container.innerHTML = '<div :style="style"></div>';
       const data = reactive({ style: { color: "red", fontSize: "12px" } as Record<string, string> });
       const app = createApp(data);
@@ -194,7 +193,7 @@ describe("directives", () => {
       expect(input.checked).toBe(true);
     });
 
-    it.todo("should merge with existing class", () => {
+    it("should merge with existing class", async () => {
       container.innerHTML = '<div class="static" :class="dynamic"></div>';
       const data = reactive({ dynamic: "dynamic" });
       const app = createApp(data);
@@ -203,7 +202,7 @@ describe("directives", () => {
       expect(div?.className).toBe("static dynamic");
 
       data.dynamic = "updated";
-      nextTick();
+      await nextTick();
       expect(div?.className).toBe("static updated");
     });
 

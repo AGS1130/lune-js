@@ -1,5 +1,5 @@
 import type { Directive } from "@lune-js/context";
-import { camelCase, isArray, isString, kebabCase } from "@lune-js/utils";
+import { camelCase, isArray, isObject, isString, kebabCase } from "@lune-js/utils";
 import { getElementMetadata, normalizeClass, normalizeStyle } from "./utils";
 
 // Properties that should be set as attributes for consistency
@@ -47,23 +47,34 @@ function handleClass(el: Element, value: any): void {
   const metadata = getElementMetadata(el);
   const originalClass = metadata.originalClass;
   const newClass = normalizeClass(originalClass ? [originalClass, value] : value) ?? "";
+  el.removeAttribute("class");
   el.setAttribute("class", newClass);
 }
 
 function handleStyle(el: HTMLElement, value: any, prevValue?: any): void {
-  value = normalizeStyle(value);
-  if (!value) {
-    el.removeAttribute("style");
-  } else if (isString(value)) {
-    if (value !== prevValue) el.style.cssText = value;
+  const removeStyleAttribute = () => el.removeAttribute("style");
+  const styleValue = normalizeStyle(value);
+
+  if (!styleValue) {
+    removeStyleAttribute();
+  } else if (isString(styleValue) && styleValue !== prevValue) {
+    removeStyleAttribute();
+    el.style.cssText = styleValue;
   } else {
-    for (const key in value) {
-      setStyle(el.style, key, value[key]);
-    }
-    if (prevValue && !isString(prevValue)) {
-      for (const key in prevValue) {
-        if (value[key] == null) {
-          setStyle(el.style, key, "");
+    removeStyleAttribute();
+
+    if (isObject(styleValue)) {
+      for (const key in styleValue) {
+        setStyle(el.style, key, styleValue[key as keyof typeof styleValue]);
+      }
+
+      if (prevValue && isObject(prevValue)) {
+        // ? Remove style again
+        for (const key in prevValue) {
+          // @ts-expect-error:  No index signature with a parameter of type 'string' was found on type 'object | NormalizedStyle'.
+          if (styleValue[key] == null) {
+            setStyle(el.style, key, "");
+          }
         }
       }
     }
@@ -75,18 +86,18 @@ function setElementAttribute(el: Element, key: string, value: any): void {
     (el as any)._trueValue = value;
   } else if (key === "false-value") {
     (el as any)._falseValue = value;
-  } else if (value != null) {
-    el.setAttribute(key, value);
   } else {
     el.removeAttribute(key);
+    if (value != null) {
+      el.setAttribute(key, value);
+    }
   }
 }
 
 function setElementProperty(el: Element, key: string, value: any): void {
   if (DOM_ATTR_PROPS.has(key)) {
-    if (value == null) {
-      el.removeAttribute(key);
-    } else {
+    el.removeAttribute(key);
+    if (value != null) {
       el.setAttribute(key, value);
     }
   } else {
